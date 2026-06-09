@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraEMS — Organization Resource Planner</title>
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Core Custom Stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Chart.js for gorgeous data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Loading Overlay for full-page transitions -->
+  <div id="app-loading" class="app-loading-screen">
+    <div class="loader-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Wrapper -->
+  <div id="toast-container" class="toast-wrapper"></div>
+
+  <!-- Auth Layout Wrapper (Visible when logged out) -->
+  <div id="auth-container" class="auth-section hidden">
+    <!-- Login Card is dynamically injected here -->
+  </div>
+
+  <!-- Main App Shell Wrapper (Visible when logged in) -->
+  <div id="main-app-shell" class="app-shell hidden">
+    <!-- Top Navigation Header -->
+    <header class="top-nav-container">
+      <div class="top-nav-main">
+        <!-- Logo / Branding -->
+        <div class="sidebar-brand">
+          <div class="brand-logo">
+            <i class="fa-solid fa-compass-drafting brand-icon"></i>
+          </div>
+          <div class="brand-text">
+            <h2>Aura<span>EMS</span></h2>
+            <p>Enterprise Suite</p>
+          </div>
+        </div>
+
+        <!-- Navigation Menu Tabs -->
+        <nav class="sidebar-menu top-menu-nav">
+          <a href="#dashboard" class="menu-item active" data-view="dashboard">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#employees" class="menu-item" data-view="employees" id="nav-employees">
+            <i class="fa-solid fa-users"></i>
+            <span>Employees</span>
+          </a>
+          <a href="#departments" class="menu-item" data-view="departments" id="nav-departments">
+            <i class="fa-solid fa-sitemap"></i>
+            <span>Departments</span>
+          </a>
+          <a href="#attendance" class="menu-item" data-view="attendance">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Attendance</span>
+          </a>
+          <a href="#leaves" class="menu-item" data-view="leaves">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <span>Leaves</span>
+          </a>
+          <a href="#reports" class="menu-item" data-view="reports" id="nav-reports">
+            <i class="fa-solid fa-file-csv"></i>
+            <span>Reports</span>
+          </a>
+        </nav>
+
+        <!-- Right Side Widgets (User, Theme, Logout) -->
+        <div class="top-nav-actions">
+          <button class="theme-toggle" id="ui-theme-toggle" title="Toggle Aesthetic Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          
+          <div class="user-badge" id="shell-user-badge">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80&q=80" alt="User" class="avatar-img" id="shell-avatar">
+            <div class="user-details">
+              <h4 id="shell-username">Guest User</h4>
+              <span id="shell-user-role">Employee</span>
+            </div>
+          </div>
+
+          <button class="logout-btn" id="shell-logout-btn" title="Logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </button>
+          
+          <!-- Mobile menu button -->
+          <button class="mobile-toggle" id="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Panel -->
+    <div class="main-layout">
+      <!-- Sub-header bar for views page details -->
+      <div class="navbar-header">
+        <div class="navbar-left">
+          <div class="navbar-page-indicator">
+            <h1 id="navbar-view-title">Dashboard</h1>
+            <span id="navbar-view-subtitle">Real-time statistics & business vitals</span>
+          </div>
+        </div>
+        <div class="navbar-right">
+          <div class="status-indicator">
+            <span class="pulse-dot"></span>
+            <span id="system-status-text">Server Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic content viewport -->
+      <main class="content-viewport" id="app-viewport">
+        <!-- Views are dynamically injected here -->
+      </main>
+    </div>
+  </div>
+
+  <!-- SPA Router & View Core scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/views/login.js"></script>
+  <script src="/js/views/dashboard.js"></script>
+  <script src="/js/views/employees.js"></script>
+  <script src="/js/views/departments.js"></script>
+  <script src="/js/views/attendance.js"></script>
+  <script src="/js/views/leaves.js"></script>
+  <script src="/js/views/reports.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
